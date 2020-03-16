@@ -10,7 +10,15 @@ print(cwaClientId)
 #GET EXAMPLE
 cwaReq = requests.get("https://api-na.myconnectwise.net/v4_6_release/apis/3.0/service/tickets",
     headers={'Authorization': str(cwaAuth), 'Accept': 'application/json', 'clientId': str(cwaClientId)})
-print(cwaReq.text)
+#print(cwaReq.text)
+workCounter = 0
+workMax = 1
+
+for entry in cwaReq.json():
+    if workCounter < workMax:
+        workCounter+=1
+        print(entry)
+
 '''
 if(getRC.equals(200)) {
     print(cwExampleGet.getInputStream().getText())
